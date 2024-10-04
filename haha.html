@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Go Out With Me?</title>
+    <link rel="stylesheet" href="ha2.css">
+</head>
+<body>
+    <div class="container">
+        <div class="box" id="questionBox">
+            <h1>Will you go out with me?</h1>
+            <div class="buttons">
+                <button id="yesButton">Yes</button>
+                <button id="noButton">No</button>
+            </div>
+        </div>
+        <div class="congratulations" id="congratulationsMessage" style="display: none;">
+            <h1>Lets go out next week you decide the place and time..</h1>
+        </div>
+    </div>
+
+    <script>
+        const noButton = document.getElementById('noButton');
+        const yesButton = document.getElementById('yesButton');
+        const questionBox = document.getElementById('questionBox');
+        const congratulationsMessage = document.getElementById('congratulationsMessage');
+
+        noButton.addEventListener('click', () => {
+            // Get the button's dimensions
+            const buttonWidth = noButton.offsetWidth;
+            const buttonHeight = noButton.offsetHeight;
+
+            // Calculate the maximum position for the button to stay within the screen
+            const maxX = window.innerWidth - buttonWidth;
+            const maxY = window.innerHeight - buttonHeight;
+
+            // Generate random position
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            noButton.style.position = 'absolute';
+            noButton.style.left = `${randomX}px`;
+            noButton.style.top = `${randomY}px`;
+        });
+
+        yesButton.addEventListener('click', () => {
+            // Change the background to flowers
+            document.body.style.backgroundImage = "url('https://example.com/your-flower-image.jpg')";
+            document.body.style.backgroundSize = 'cover';
+
+            // Hide the question box
+            questionBox.style.display = 'none';
+
+            // Show the congratulations message
+            congratulationsMessage.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
